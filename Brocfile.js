@@ -1,4 +1,6 @@
 /* global require, module */
+var Funnel = require('broccoli-funnel');
+
 
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
@@ -16,5 +18,16 @@ var app = new EmberApp();
 // modules that you would like to import into your application
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
+app.import('bower_components/supersonic/css/supersonic.css');
+// app.import('bower_components/supersonic/components/import.html');
+app.import('bower_components/steroids-js/steroids.js');
+app.import('bower_components/supersonic/supersonic.core.js');
+app.import('bower_components/webcomponentsjs/webcomponents.js');
 
-module.exports = app.toTree();
+var extraAssets = new Funnel('bower_components/supersonic', {
+  srcDir: '/',
+  include: ['components/*', 'css/*', 'fonts/*', 'supersonic.core.js'],
+  destDir: '/supersonic'
+});
+
+module.exports = app.toTree(extraAssets);

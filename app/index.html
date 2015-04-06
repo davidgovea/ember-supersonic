@@ -12,13 +12,21 @@
     <link rel="stylesheet" href="assets/vendor.css">
     <link rel="stylesheet" href="assets/ember-app.css">
 
-    {{content-for 'head-footer'}}
-  </head>
-  <body>
-    {{content-for 'body'}}
+    <link rel="import" href="/supersonic/components/import.html">
 
     <script src="assets/vendor.js"></script>
     <script src="assets/ember-app.js"></script>
+
+    {{content-for 'head-footer'}}
+  </head>
+  <body>
+    <super-navbar>
+      <super-navbar-title>
+        Welcome to Ember.js
+      </super-navbar-title>
+    </super-navbar>
+
+    {{content-for 'body'}}
 
     {{content-for 'body-footer'}}
   </body>
