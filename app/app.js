@@ -14,3 +14,8 @@ var App = Ember.Application.extend({
 loadInitializers(App, config.modulePrefix);
 
 export default App;
+
+
+window.addEventListener('WebComponentsReady', function() {
+  supersonic.app.splashscreen.hide();
+});
