@@ -19,10 +19,8 @@ var app = new EmberApp();
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 app.import('bower_components/supersonic/css/supersonic.css');
-// app.import('bower_components/supersonic/components/import.html');
 app.import('bower_components/steroids-js/steroids.js');
 app.import('bower_components/supersonic/supersonic.core.js');
-app.import('bower_components/webcomponentsjs/webcomponents.js');
 
 var extraAssets = new Funnel('bower_components/supersonic', {
   srcDir: '/',
@@ -30,4 +28,9 @@ var extraAssets = new Funnel('bower_components/supersonic', {
   destDir: '/supersonic'
 });
 
-module.exports = app.toTree(extraAssets);
+var webComponentsTree = new Funnel('bower_components/webcomponentsjs/', {
+  include: ['webcomponents.js'],
+  destDir: '/assets'
+});
+
+module.exports = app.toTree([extraAssets, webComponentsTree]);
