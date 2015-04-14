@@ -1,6 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  pubsub: Ember.inject.service('super-pubsub'),
+
+  beforeModel: function() {
+    this.get('pubsub');
+
+  },
 
   actions: {
     conf: function() {

@@ -7,5 +7,7 @@ var Router = Ember.Router.extend({
 
 export default Router.map(function() {
   this.route('left-drawer');
-  this.route('settings');
+  this.route('settings', function() {
+    this.route('sub');
+  });
 });
